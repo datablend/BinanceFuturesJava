@@ -135,6 +135,11 @@ public class SyncRequestImpl implements SyncRequestClient {
     public ResponseResult changeMarginType(String symbolName, MarginType marginType) {
         return RestApiInvoker.callSync(requestImpl.changeMarginType(symbolName, marginType));
     }
+    
+    public ResponseResult restrictions() {
+        return RestApiInvoker.callSync(requestImpl.restrictions());
+    }
+
 
     @Override
     public JSONObject addIsolatedPositionMargin(String symbolName, int type, String amount, PositionSide positionSide) {
