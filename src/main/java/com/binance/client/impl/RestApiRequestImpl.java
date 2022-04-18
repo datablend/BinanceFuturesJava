@@ -841,7 +841,20 @@ class RestApiRequestImpl {
         });
         return request;
     }
+    
+    RestApiRequest<JSONObject> restrictions() {
+        RestApiRequest<JSONObject> request = new RestApiRequest<>();
+        UrlParamsBuilder builder = UrlParamsBuilder.build();
+        request.request = createRequestByPostWithSignature("/fapi/v1/apiTradingStatus", builder);
 
+        request.jsonParser = (jsonWrapper -> {
+            JSONObject result = new JSONObject();
+            System.out.println(jsonWrapper.toString());
+            return result;
+        });
+        return request;
+    }
+    
     RestApiRequest<List<WalletDeltaLog>> getPositionMarginHistory(String symbol, Integer type, Long startTime, Long endTime, Integer limit) {
         RestApiRequest<List<WalletDeltaLog>> request = new RestApiRequest<>();
         UrlParamsBuilder builder = UrlParamsBuilder.build()
